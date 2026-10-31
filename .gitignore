@@ -9,3 +9,6 @@
 
 # rspec failure tracking
 .rspec_status
+
+# a library doesn't lock its dependencies
+Gemfile.lock
