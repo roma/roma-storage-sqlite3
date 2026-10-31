@@ -1,39 +1,43 @@
-# Roma::Storage::Sqlite3
+# roma-storage-sqlite3
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/roma/storage/sqlite3`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+An SQLite3 storage for [ROMA](https://github.com/roma/roma), a distributed key-value store.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to the Gemfile of your ROMA server:
 
 ```ruby
 gem 'roma-storage-sqlite3'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+And then run `bundle install`. Or install it yourself:
 
     $ gem install roma-storage-sqlite3
 
+
+
 ## Usage
 
-TODO: Write usage instructions here
+In the config.rb of ROMA, require the storage and set it to `STORAGE_CLASS`:
+
+```ruby
+require 'roma/storage/sqlite3'
+
+module Roma
+  module Config
+    # ...
+    STORAGE_CLASS = Roma::Storage::SQLite3Storage
+    # ...
+  end
+end
+```
+
+Each node keeps its data in `STORAGE_PATH/<node-id>/<hash-name>/`, divided into `STORAGE_DIVNUM` files named `0.sql3`, `1.sql3` and so on.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Run `bundle install`, then `bundle exec rake spec` to run the tests.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## License
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/satoryu/roma-storage-sqlite3. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Code of Conduct
-
-Everyone interacting in the Roma::Storage::Sqlite3 project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/satoryu/roma-storage-sqlite3/blob/master/CODE_OF_CONDUCT.md).
+GPL-3.0. See LICENSE.txt.

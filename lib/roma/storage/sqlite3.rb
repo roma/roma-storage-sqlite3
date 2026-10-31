@@ -12,9 +12,9 @@ module Roma
           k = k.encode("ascii-8bit") if k.encoding != Encoding::ASCII_8BIT
         end
         if self.execute("select count(*) from t_roma where key=?",k)[0][0].to_i==0
-          self.execute("insert into t_roma values (?,?)",k,SQLite3::Blob.new(v))
+          self.execute("insert into t_roma values (?,?)",[k,SQLite3::Blob.new(v)])
         else
-          self.execute("update t_roma set val=? where key=?",SQLite3::Blob.new(v),k)
+          self.execute("update t_roma set val=? where key=?",[SQLite3::Blob.new(v),k])
         end
       end
 
