@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'sqlite3'
-  spec.add_dependency 'roma-storage', '~> 0.1.0'
+  spec.add_dependency 'roma-storage', '~> 0.3'
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 3.0"
