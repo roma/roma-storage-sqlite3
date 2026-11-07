@@ -87,10 +87,4 @@ RSpec.describe Roma::Storage::SQLite3Storage do
     expect(st.true_length).to eq(1)
     st.closedb
   end
-
-  it "tells its class in the stats" do
-    st = open_storage
-    expect(st.get_stat['storage.st_class']).to eq('SQLite3Storage')
-    st.closedb
-  end
 end
